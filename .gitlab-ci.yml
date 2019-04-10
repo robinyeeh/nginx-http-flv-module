@@ -1,0 +1,13 @@
+variables:
+  trigger_token: 3d1530005672a49636c2136d01c1ba
+  trigger_ref: master
+  trigger_url: https://git.conversant.com.cn/api/v4/projects/30/trigger/pipeline
+
+
+build_docs:
+  stage: deploy
+  script:
+    - curl -X POST -F token=${trigger_token} -F ref=${trigger_ref} ${trigger_url}
+  only:
+    - master
+    - tags
